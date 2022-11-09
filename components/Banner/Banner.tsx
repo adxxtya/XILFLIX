@@ -31,14 +31,15 @@ function Banner(props: any) {
 <div className='relative'>
 
 
-    <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[85vh] lg:justify-end lg:pb-12">
-    <div className="absolute top-0 left-0 h-[90vh] w-screen">
-      <Image
-        layout="fill"
-        src={`${imageBaseUrl}${randomBanner?.backdrop_path || randomBanner?.poster_path}`}
-        objectFit="cover"
-      />
-    </div>
+    <div className="flex flex-col space-y-2 py-16 md:space-y-4 h-[30vh] lg:h-[85vh] lg:justify-end lg:pb-12">
+    
+      <div className="absolute top-0 left-0  h-[40vh] md:h-[55vh] lg:h-[90vh] w-screen">
+        <Image
+          layout="fill"
+          src={`${imageBaseUrl}${randomBanner?.backdrop_path || randomBanner?.poster_path}`}
+          objectFit="cover"
+        />
+      </div>
 
     <h1 className="pl-4 pb-2 lg:pl-16 z-10 text-shadow-lg text-2xl font-bold md:text-4xl lg:text-7xl">
       {randomBanner?.title || randomBanner?.name || randomBanner?.original_name}

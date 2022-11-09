@@ -10,14 +10,35 @@ import requests from '../utilitites/constants'
 import { useRecoilValue } from 'recoil'
 import { modalState } from '../atoms/modalItem'
 import Modal from '../components/Essentials/Modal'
+import Plans from '../components/Essentials/Plans'
+import { getProducts, Product } from '@stripe/firestore-stripe-payments'
+import payments from '../lib/stripe'
+import { Movie } from '../typings'
+import useSubscription from '../hooks/useSubscription'
+
+interface Props {
+  netflixOriginals: Movie[]
+  trendingNow: Movie[]
+  topRated: Movie[]
+  actionMovies: Movie[]
+  comedyMovies: Movie[]
+  horrorMovies: Movie[]
+  romanceMovies: Movie[]
+  documentaries: Movie[]
+  products: Product[]
+}
 
 const Home = (props: any) => {
+
   // console.log(props)
-  // console.log(props.seriesByPopularity)
-  const { loading } = useAuth()
+  const { user, loading } = useAuth()
   const showModal = useRecoilValue(modalState) 
+  const subscription = useSubscription(user)
 
   if (loading) return null
+  if (loading || subscription === null) return null
+  
+  if (!subscription) return <Plans products={props.products}/>
 
   return (
     <div 
@@ -53,6 +74,14 @@ const Home = (props: any) => {
 export default Home
 
 export async function getServerSideProps() {
+
+  const products = await getProducts(payments, {
+    includePrices: true,
+    activeOnly: true,
+  })
+    .then((res) => res)
+    .catch((error) => console.log(error.message))
+
   const resRandom = await fetch(`${requests.randomSeries}`)
   const randomSeries = await resRandom.json()
 
@@ -87,6 +116,7 @@ export async function getServerSideProps() {
       netflixOriginals: netflixOriginals.results || null,
       hotstarOriginals: hotstarOriginals.results || null,
       youtubeTrendingVideos: youtubeTrendingVideos.items || null,
+      products,
     }, 
   }
 }

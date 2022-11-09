@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import useAuth from '../../hooks/useAuth'
-
 import { BsFillCameraReelsFill, BsDiscFill, BsTvFill } from 'react-icons/bs'
 
 
@@ -31,7 +30,7 @@ function Navbar() {
           </div>
       </Link>
 
-        <div className="flex items-center justify-center gap-x-2 whitespace-nowrap font-normal text-white hover:text-gray-300 hover:underline text-xl md:text-lg">
+        {/* <div className="flex items-center justify-center gap-x-2 whitespace-nowrap font-normal text-white hover:text-gray-300 hover:underline text-xl md:text-lg">
           <BsDiscFill color="white" size={20} className="cursor-pointer" />
           <Link href="/anime/random-anime">Movies</Link>
         </div>
@@ -42,12 +41,16 @@ function Navbar() {
         <div className="flex items-center justify-center gap-x-2 whitespace-nowrap font-normal text-white hover:text-gray-300 hover:underline text-xl md:text-lg">
           <BsTvFill color="white" size={20} className="cursor-pointer" />
           <Link href="/anime/popular-anime"> Anime </Link>
-        </div>
+        </div> */}
 
       {/* <div onClick={logout}>
         <BsDiscFill />
       </div> */}
 
+<button onClick={logout} className="">
+      Log Out
+</button>
+      
       </nav>
     </>
   )
