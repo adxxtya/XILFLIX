@@ -9,6 +9,8 @@ const youtubeApiKey = "AIzaSyAZ2iiQhEZsYeboZyUbNiBuz4Ul2faVHCQ"
 
 const requests = {
     // randomSeries: `${tmdbBaseUrl}/tv/${randomId}?api_key=${tmdbApiKey}`,
+    topRatedMovies: `${tmdbBaseUrl}/movie/top_rated?api_key=${tmdbApiKey}&language=en-US&page=1`,
+    topRatedSeries: `${tmdbBaseUrl}/tv/top_rated?api_key=${tmdbApiKey}&language=en-US&page=1`,
     randomSeries: `${tmdbBaseUrl}/discover/movie?api_key=${tmdbApiKey}`,
     moviesByPopularity: `${tmdbBaseUrl}/movie/popular?api_key${tmdbApiKey}&include_adult=false&language=en-US&page=1&with_original_language=en-US&include_backdrop_path=null`,
     seriesByPopularity: `${tmdbBaseUrl}/tv/popular?api_key=${tmdbApiKey}&include_adult=false&language=en-US&page=1&without_genres=35`,

@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { modalState, movieState } from '../../atoms/modalItem'
 
-function RowAnime(props: any) {
+function Row(props: any) {
 
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
@@ -12,7 +12,7 @@ function RowAnime(props: any) {
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
 
   // console.log(Object.values(props.data))
-  // console.log(props.data)
+  console.log(props.data)
   
   
   const handleClick = (direction: string) => {
@@ -80,7 +80,7 @@ function RowAnime(props: any) {
               <div className="" >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${
-                    prop.backdrop_path || prop.poster_path
+                    prop.backdrop_path 
                   }`}
                   className="rounded-lg"
                   />
@@ -97,4 +97,4 @@ function RowAnime(props: any) {
   )
 }
 
-export default RowAnime
+export default Row

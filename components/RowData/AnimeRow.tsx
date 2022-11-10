@@ -1,12 +1,34 @@
-import React from 'react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
+import React, { useRef, useState } from 'react'
 
-function Row(props: any) {
+function AnimeRow(props: any) {
   //   console.log(props);
+  const rowRef = useRef<HTMLDivElement>(null)
+  const [isMoved, setIsMoved] = useState(false)
+
+  const handleClick = (direction: string) => {
+    setIsMoved(true)
+    if (rowRef.current) {
+      const { scrollLeft, clientWidth } = rowRef.current
+
+      const scrollTo =
+        direction === 'left'
+          ? scrollLeft - clientWidth
+          : scrollLeft + clientWidth
+      rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' })
+    }
+  }
 
   return (
-    <main className='ml-2'>
+    <main className='group relative ml-2'>
        <div className="text-2xl mt-6 mb-4 ml-6">{props.title}</div>
-      <div className="flex object-cover items-center overflow-y-hidden
+       <ChevronLeftIcon
+          className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
+            !isMoved && 'hidden'
+          }`}
+          onClick={() => handleClick('left')}
+        />
+      <div ref={rowRef} className="flex object-cover items-center overflow-y-hidden
                     overflow-x-scroll scrollbar-hide">
         {props?.data.map((prop: any, key: any, title: any) => {
           return (
@@ -51,9 +73,13 @@ function Row(props: any) {
             </div>
           )
         })}
+        <ChevronRightIcon
+          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
+          onClick={() => handleClick('right')}
+        />
       </div>
     </main>
   )
 }
 
-export default Row
+export default AnimeRow

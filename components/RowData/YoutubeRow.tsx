@@ -22,7 +22,7 @@ function RowAnime(props: any) {
   }
 
   return (
-    <main className='ml-2'>
+    <main className='group relative ml-2'>
        <div className="text-2xl mt-6 mb-2 ml-6">{props.title}</div>
        <ChevronLeftIcon
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
@@ -30,8 +30,8 @@ function RowAnime(props: any) {
           }`}
           onClick={() => handleClick('left')}
         />
-      <div ref={rowRef} className=" flex object-cover overflow-x-scroll scrollbar-hide"></div>
-      <div className=" flex object-cover overflow-x-scroll scrollbar-hide">
+      <div className=" flex object-cover overflow-x-scroll scrollbar-hide"></div>
+      <div ref={rowRef} className=" flex object-cover overflow-x-scroll scrollbar-hide">
         {props?.data.map((prop: any, key: any, title: any) => {
           return (
             <div
@@ -73,7 +73,7 @@ function RowAnime(props: any) {
             </div>
           )
         })}
-              <ChevronRightIcon
+          <ChevronRightIcon
           className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
           onClick={() => handleClick('right')}
         />

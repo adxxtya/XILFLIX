@@ -53,14 +53,16 @@ const Home = (props: any) => {
       <main>
         <Banner randomSeries={props.randomSeries} moviesByPopularity={props.moviesByPopularity} />
 
-        <section className="space-y-16 mt-[50vh] md:mt-72 lg:mt-32" >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        <section className="space-y-16 mt-[50vh] md:mt-72 lg:mt-32" >    
+          {/* <Row title="Series By Popularity" data={props.seriesByPopularity} />
+          <Row title="Movies By Popularity" data={props.moviesByPopularity} /> */}
+          <Row title="Top Rated WebSeries" data={props.topRatedSeries} />     
+          <Row title="Top Rated Movies" data={props.topRatedMovies} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
           <Row title="Trending Netflix Series" data={props.netflixOriginals} />
           <Row title="Trending Amazon Series" data={props.amazonOriginals} />
           <Row title="Trending Hotstar Series" data={props.hotstarOriginals} />
           <RowAnime title="Anime By Popularity" data={props.animeByPopularity.data} />
           <YoutubeRow title="Trending Youtube Videos" data={props.youtubeTrendingVideos} />
-          {/* <Row title="Series By Popularity" data={props.seriesByPopularity} />
-          <Row title="Movies By Popularity" data={props.moviesByPopularity} /> */}
         </section>
       </main>
 
@@ -81,6 +83,12 @@ export async function getServerSideProps() {
   })
     .then((res) => res)
     .catch((error) => console.log(error.message))
+
+  const resTop = await fetch(`${requests.topRatedMovies}`)
+  const topRatedMovies = await resTop.json()    
+
+  const resTops = await fetch(`${requests.topRatedSeries}`)
+  const topRatedSeries = await resTops.json()
 
   const resRandom = await fetch(`${requests.randomSeries}`)
   const randomSeries = await resRandom.json()
@@ -110,7 +118,9 @@ export async function getServerSideProps() {
     props: {
       randomSeries: randomSeries.results || null,
       animeByPopularity: animeByPopularity || null,
-      moviesByPopularity: moviesByPopularity || null,
+      topRatedMovies: topRatedMovies.results || null,
+      topRatedSeries: topRatedSeries.results || null,
+      moviesByPopularity: moviesByPopularity.results || null,
       seriesByPopularity: seriesByPopularity.results || null,
       amazonOriginals: amazonOriginals.results || null,
       netflixOriginals: netflixOriginals.results || null,
