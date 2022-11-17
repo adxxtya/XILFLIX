@@ -22,6 +22,8 @@ module.exports = {
     ],
     "rules": {
         "jsx-a11y/alt-text": [0],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx",".ts", ".tsx"] }],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-this-alias": "off",

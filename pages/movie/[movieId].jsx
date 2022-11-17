@@ -4,7 +4,8 @@ import Navbar from '../../components/Essentials/Navbar';
 
 
 function index() {      
-  useEffect(() => {
+
+    useEffect(() => {
     var el = document.getElementById('player');
     window.webtor = window.webtor || [];
     window.webtor.push({
