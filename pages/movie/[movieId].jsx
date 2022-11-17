@@ -3,7 +3,7 @@ import Script from 'next/script';
 import Navbar from '../../components/Essentials/Navbar';
 
 
-function index() {      
+function Index() {      
 
     useEffect(() => {
     var el = document.getElementById('player');
@@ -170,4 +170,4 @@ function index() {
 
 
 
-export default index
+export default Index
