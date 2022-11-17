@@ -4,7 +4,9 @@ module.exports = {
         "es2021": true
     },
     "extends": [
+        // "eslint:recommended",
         "plugin:react/recommended",
+        // "plugin:@typescript-eslint/recommended",
         "next/core-web-vitals"
     ],
     "overrides": [
@@ -16,7 +18,7 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        // "@typescript-eslint"
     ],
     "rules": {
         "@typescript-eslint/no-explicit-any": "off",
