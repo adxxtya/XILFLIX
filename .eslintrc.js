@@ -7,7 +7,6 @@ module.exports = {
         // "eslint:recommended",
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
-        "plugin:react/tsx-runtime",
         // "plugin:@typescript-eslint/recommended",
         "next/core-web-vitals"
     ],
