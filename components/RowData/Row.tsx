@@ -12,7 +12,7 @@ function Row(props: any) {
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
 
   // console.log(Object.values(props.data))
-  console.log(props.data)
+  // console.log(props.data)
   
   
   const handleClick = (direction: string) => {
