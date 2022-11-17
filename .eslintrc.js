@@ -17,8 +17,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "eslint:all", 
-        "plugin:react/all"
+        "react",
+        "@typescript-eslint"
     ],
     "rules": {
         "@typescript-eslint/no-explicit-any": "off",
@@ -27,6 +27,6 @@ module.exports = {
         "@next/next/no-html-link-for-pages": "off",
         "@typescript-eslint/no-non-null-asserted-optional-chain" : "off",
         "react/no-unescaped-entities": "off"
-
+        
     }
 }
